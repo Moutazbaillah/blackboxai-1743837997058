@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="موقع توثيقي للألعاب الشعبية مع روابط تحميل مباشرة ومعلومات شاملة">
+  <meta name="keywords" content="ألعاب شعبية، تحميل، استغماية، شد الحبل، ألعاب تراثية">
+  <meta name="author" content="فريق الألعاب الشعبية">
+  <title>موقع الألعاب الشعبية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-gray-800 text-white p-4 shadow-md">
+    <div class="container mx-auto">
+      <h1 class="text-2xl font-bold">موقع الألعاب الشعبية</h1>
+      <p class="text-gray-300">تجميع وتوثيق الألعاب الشعبية القديمة وروابط تحميلها للأجهزة الحديثة</p>
+      <button id="toggle-darkmode" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+        <i class="fas fa-moon mr-1"></i> تبديل الوضع
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4">
+    <div class="flex flex-col md:flex-row gap-4">
+      <section class="w-full md:w-1/4 bg-white p-4 rounded shadow-md">
+        <h3 class="text-lg font-bold mb-2">الألعاب الأكثر شعبية:</h3>
+        <ul class="list-disc pr-4">
+          <li class="mb-1">الغميمة</li>
+          <li class="mb-1">شد الحبل</li>
+        </ul>
+      </section>
+
+      <div class="w-full md:w-3/4">
+        <form action="/submit-game" method="POST" class="bg-white p-4 rounded shadow-md mb-4">
+          <h3 class="text-lg font-bold mb-2">اقترح لعبة جديدة</h3>
+          <div class="mb-3">
+            <label class="block mb-1">اسم اللعبة:</label>
+            <input type="text" name="game_name" required class="w-full p-2 border rounded">
+          </div>
+          <div class="mb-3">
+            <label class="block mb-1">الوصف:</label>
+            <textarea name="description" rows="4" required class="w-full p-2 border rounded"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="block mb-1">رابط تحميل:</label>
+            <input type="url" name="download_url" pattern="https?://.*" class="w-full p-2 border rounded">
+          </div>
+          <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            <i class="fas fa-paper-plane mr-1"></i> إرسال
+          </button>
+        </form>
+
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 mb-4">
+          <p class="text-yellow-700">📢 إعلان: حمل ألعابنا واسترجع ذكريات الطفولة! 🚀</p>
+        </div>
+
+        <input type="text" id="search-bar" placeholder="ابحث عن لعبة..." class="w-full p-2 border rounded mb-4">
+
+        <div class="bg-blue-100 border-l-4 border-blue-500 p-3 mb-4">
+          <p class="text-blue-700">🔥 أحدث التحديثات: ألعاب جديدة قادمة كل أسبوع!</p>
+        </div>
+
+        <section class="game-card bg-white p-4 rounded shadow-md hover:shadow-lg transition duration-300 mb-4">
+          <h2 class="text-xl font-bold mb-2">لعبة الغميمة (الاستغماية)</h2>
+          <p class="mb-2"><strong>الوصف:</strong> لعبة ممتعة تعتمد على الاختباء والبحث.</p>
+          <p class="mb-2"><strong>أسماء أخرى:</strong> الغميضة، خباية، طمّي طمّك</p>
+          <p class="mb-4"><strong>عدد اللاعبين:</strong> 3 فأكثر</p>
+          
+          <div class="download-buttons mb-4">
+            <a href="#" onclick="showAlert('الغميمة - ويندوز')" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded mr-2 mb-2">
+              <i class="fas fa-download mr-1"></i> 🖥️ تحميل للويندوز
+            </a>
+            <a href="#" onclick="showAlert('الغميمة - أندرويد')" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded mr-2 mb-2">
+              <i class="fas fa-download mr-1"></i> 📱 تحميل للأندرويد
+            </a>
+            <a href="#" onclick="showAlert('الغميمة - iOS')" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded mr-2 mb-2">
+              <i class="fas fa-download mr-1"></i> 🍎 تحميل للـ iOS
+            </a>
+            <a href="#" onclick="showAlert('الغميمة - مباشرة')" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded mr-2 mb-2">
+              <i class="fas fa-gamepad mr-1"></i> 🌐 العبها مباشرة
+            </a>
+          </div>
+
+          <div class="rating mb-4">
+            <label class="mr-2">التقييم:</label>
+            <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+            <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+            <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+            <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+            <i class="fas fa-star text-gray-300 cursor-pointer"></i>
+          </div>
+
+          <form action="/submit-review" method="POST" class="mb-4">
+            <label class="block mb-1">مراجعة اللعبة:</label>
+            <textarea name="review" rows="4" required class="w-full p-2 border rounded mb-2"></textarea>
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+              <i class="fas fa-check mr-1"></i> إرسال
+            </button>
+          </form>
+
+          <div class="review bg-gray-50 p-3 rounded mb-2">
+            <p class="mb-1">مراجعة رائعة! اللعبة ممتعة جدًا. 👍</p>
+            <button class="text-blue-500 hover:text-blue-700 text-sm">
+              <i class="fas fa-reply mr-1"></i> رد
+            </button>
+          </div>
+
+          <div class="social-share mt-4">
+            <a href="https://facebook.com/sharer.php?u=your-page-link" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded mr-2">
+              <i class="fab fa-facebook mr-1"></i> مشاركة على فيسبوك
+            </a>
+            <a href="https://twitter.com/share?url=your-page-link" target="_blank" class="inline-block bg-blue-400 hover:bg-blue-500 text-white px-3 py-1 rounded mr-2">
+              <i class="fab fa-twitter mr-1"></i> مشاركة على تويتر
+            </a>
+            <a href="https://wa.me/?text=your-page-link" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">
+              <i class="fab fa-whatsapp mr-1"></i> مشاركة على واتساب
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white p-4 mt-8">
+    <div class="container mx-auto text-center">
+      <p>جميع الحقوق محفوظة &copy; 2025 - موقع الألعاب الشعبية</p>
+      <p class="mt-1">بروتوكول: <span class="bg-green-500 text-white px-2 rounded">HTTPS</span> مفعل لحماية بياناتك 👮</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
